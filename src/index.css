@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+}
+
+@layer components {
+    .recipe-card-hover {
+        transition-property: all;
+        transition-duration: 300ms;
+        transition-timing-function: ease-out;
+    }
+    .recipe-card-hover:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    }
+    .hero-pattern {
+        background-image: radial-gradient(circle at 1px 1px, rgba(232, 93, 4, 0.08) 1px, transparent 0);
+        background-size: 32px 32px;
+    }
+}
