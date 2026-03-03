@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar.tsx";
 import {Outlet} from "react-router-dom";
+import Footer from "./components/Footer.tsx";
 export function App() {
 
   return (
@@ -8,6 +9,7 @@ export function App() {
       <main className="flex-1">
         <Outlet/>
       </main>
+        <Footer/>
     </div>
   )
 }
