@@ -1,6 +1,14 @@
 import {Flame} from "lucide-react";
+import SearchBar from "../components/SearchBar.tsx";
+import {useRecipeSearch} from "../hooks/useRecipeSearch.ts";
 
 export function HomePage(){
+
+    const {
+        searchQuery,
+        setSearchQuery,
+        performSearch
+    } = useRecipeSearch()
     return (
         <div>
             <section className="hero-pattern bg-base-200 border-b border-base-300">
@@ -22,7 +30,11 @@ export function HomePage(){
                     </div>
 
                     <div className="max-w-xl mx-auto">
-                        Search Bar
+                        <SearchBar
+                            value={searchQuery}
+                            onChange={setSearchQuery}
+                            onSubmit={performSearch}
+                        />
                     </div>
                 </div>
             </section>
