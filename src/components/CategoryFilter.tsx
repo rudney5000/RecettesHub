@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-// import { getCategories, getAreas } from '../services/api'
 import { Filter, X } from 'lucide-react'
 import type {Area, Category} from "../types";
+import {getAreas, getCategories} from "../services/api.ts";
 
 interface CategoryFilterProps {
     selectedCategory: string
@@ -20,10 +20,10 @@ export default function CategoryFilter({
     const [areas, setAreas] = useState<Area[]>([])
     const [isExpanded, setIsExpanded] = useState(false)
 
-    // useEffect(() => {
-    //     getCategories().then(setCategories).catch(console.error)
-    //     getAreas().then(setAreas).catch(console.error)
-    // }, [])
+    useEffect(() => {
+        getCategories().then(setCategories).catch(console.error)
+        getAreas().then(setAreas).catch(console.error)
+    }, [])
 
     const hasFilters = selectedCategory || selectedArea
 

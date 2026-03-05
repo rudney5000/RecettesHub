@@ -21,3 +21,14 @@ export interface Category {
 export interface Area {
     strArea: string
 }
+
+export interface MealSummary {
+    idMeal: string
+    strMeal: string
+    strMealThumb: string
+}
+
+export type ApiResponse<T> =
+    | { meals: T[] | null }
+    | { categories: T[] }
+    | { [key: string]: never };
