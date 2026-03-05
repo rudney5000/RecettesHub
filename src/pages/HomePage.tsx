@@ -1,10 +1,20 @@
 import {Flame} from "lucide-react";
 import SearchBar from "../components/SearchBar.tsx";
 import {useRecipeSearch} from "../hooks/useRecipeSearch.ts";
+import CategoryFilter from "../components/CategoryFilter.tsx";
+import RecipeGrid from "../components/RecipeGrid.tsx";
 
 export function HomePage(){
 
     const {
+        loading,
+        error,
+        meals,
+        selectedCategory,
+        setSelectedCategory,
+        selectedArea,
+        setSelectedArea,
+        paginatedMeals,
         searchQuery,
         setSearchQuery,
         performSearch
@@ -37,6 +47,28 @@ export function HomePage(){
                         />
                     </div>
                 </div>
+            </section>
+
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                    <CategoryFilter
+                        selectedCategory={selectedCategory}
+                        selectedArea={selectedArea}
+                        onCategoryChange={setSelectedCategory}
+                        onAreaChange={setSelectedArea}
+                    />
+                    {!loading && meals.length > 0 && (
+                        <p className="text-sm text-base-content/50">
+                            {meals.length} recette{meals.length > 1 ? 's' : ''} trouvee{meals.length > 1 ? 's' : ''}
+                        </p>
+                    )}
+                </div>
+                <RecipeGrid
+                    meals={paginatedMeals}
+                    loading={loading}
+                    error={error}
+                />
+
             </section>
         </div>
     )
