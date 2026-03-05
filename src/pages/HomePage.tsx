@@ -7,18 +7,20 @@ import RecipeGrid from "../components/RecipeGrid.tsx";
 export function HomePage(){
 
     const {
+        paginatedMeals,
         loading,
         error,
-        meals,
-        selectedCategory,
-        setSelectedCategory,
-        selectedArea,
-        setSelectedArea,
-        paginatedMeals,
         searchQuery,
+        selectedCategory,
+        selectedArea,
+        meals,
         setSearchQuery,
-        performSearch
+        setSearchQuery,
+        setSelectedCategory,
+        setSelectedArea,
+        performSearch,
     } = useRecipeSearch()
+
     return (
         <div>
             <section className="hero-pattern bg-base-200 border-b border-base-300">

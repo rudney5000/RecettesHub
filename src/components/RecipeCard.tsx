@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Tag } from 'lucide-react'
+import {Heart, MapPin, Tag} from 'lucide-react'
 import type { Meal } from '../types'
+import {useFavorites} from "../context/FavoritesContext.tsx";
 
 interface RecipeCardProps {
     meal: Meal
 }
 
 export default function RecipeCard({ meal }: RecipeCardProps) {
-    // const { isFavorite, toggleFavorite } = useFavorites()
-    // const favorite = isFavorite(meal.idMeal)
+    const { isFavorite, toggleFavorite } = useFavorites()
+    const favorite = isFavorite(meal.idMeal)
 
     return (
         <article className="card bg-base-100 shadow-md recipe-card-hover border border-base-300/50 overflow-hidden">
@@ -20,21 +21,21 @@ export default function RecipeCard({ meal }: RecipeCardProps) {
                     loading="lazy"
                     crossOrigin="anonymous"
                 />
-                {/*<button*/}
-                {/*    onClick={(e) => {*/}
-                {/*        e.preventDefault()*/}
-                {/*        e.stopPropagation()*/}
-                {/*        // toggleFavorite(meal)*/}
-                {/*    }}*/}
-                {/*    className={`absolute top-3 right-3 btn btn-circle btn-sm border-0 shadow-lg ${*/}
-                {/*        favorite*/}
-                {/*            ? 'bg-primary text-primary-content hover:bg-primary/90'*/}
-                {/*            : 'bg-base-100/80 backdrop-blur-sm text-base-content hover:bg-base-100'*/}
-                {/*    }`}*/}
-                {/*    aria-label={favorite ? `Retirer ${meal.strMeal} des favoris` : `Ajouter ${meal.strMeal} aux favoris`}*/}
-                {/*>*/}
-                {/*    <Heart className={`w-4 h-4 ${favorite ? 'fill-current' : ''}`} />*/}
-                {/*</button>*/}
+                <button
+                    onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        toggleFavorite(meal)
+                    }}
+                    className={`absolute top-3 right-3 btn btn-circle btn-sm border-0 shadow-lg ${
+                        favorite
+                            ? 'bg-primary text-primary-content hover:bg-primary/90'
+                            : 'bg-base-100/80 backdrop-blur-sm text-base-content hover:bg-base-100'
+                    }`}
+                    aria-label={favorite ? `Retirer ${meal.strMeal} des favoris` : `Ajouter ${meal.strMeal} aux favoris`}
+                >
+                    <Heart className={`w-4 h-4 ${favorite ? 'fill-current' : ''}`} />
+                </button>
                 {meal.strCategory && (
                     <span className="absolute bottom-3 left-3 badge badge-sm bg-base-100/90 backdrop-blur-sm text-base-content border-0 gap-1">
                         <Tag className="w-3 h-3" />
