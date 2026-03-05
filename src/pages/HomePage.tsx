@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar.tsx";
 import {useRecipeSearch} from "../hooks/useRecipeSearch.ts";
 import CategoryFilter from "../components/CategoryFilter.tsx";
 import RecipeGrid from "../components/RecipeGrid.tsx";
+import Pagination from "../components/Pagination.tsx";
 
 export function HomePage(){
 
@@ -15,9 +16,11 @@ export function HomePage(){
         selectedArea,
         meals,
         setSearchQuery,
-        setSearchQuery,
         setSelectedCategory,
         setSelectedArea,
+        currentPage,
+        totalPages,
+        setCurrentPage,
         performSearch,
     } = useRecipeSearch()
 
@@ -71,6 +74,13 @@ export function HomePage(){
                     error={error}
                 />
 
+                <div className="mt-8">
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                    />
+                </div>
             </section>
         </div>
     )
