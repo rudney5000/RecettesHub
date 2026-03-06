@@ -28,6 +28,11 @@ export interface MealSummary {
     strMealThumb: string
 }
 
+export interface Ingredient {
+    name: string
+    measure: string
+}
+
 export type ApiResponse<T> =
     | { meals: T[] | null }
     | { categories: T[] }
