@@ -58,7 +58,7 @@ export function useRecipeSearch(): UseRecipeSearchReturn {
             } else if (searchQuery.trim()) {
                 results = await searchMeals(searchQuery.trim())
             } else {
-                results = await searchMeals('')
+                results = await searchMeals('a')
             }
 
             if (searchQuery.trim() && (selectedCategory || selectedArea)) {
