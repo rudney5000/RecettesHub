@@ -3,7 +3,7 @@ import { searchMeals, getMealById, getCategories, getAreas } from '../api'
 import {mockAreas, mockCategories, mockMeal} from "../../test/mock.ts";
 
 const mockFetch = vi.fn()
-global.fetch = mockFetch
+// global.fetch = mockFetch
 
 describe('API Service', () => {
     beforeEach(() => {
